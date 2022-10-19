@@ -78,8 +78,3 @@ sendBook.addEventListener("click", function (e) {
     let entry = book.createEntry();
     library.appendChild(entry)
 })
-
-let testBook = new Book("Herzog", "Zwei", 255, false);
-let testBook2 = new Book("Long Title Long Title Long Title", "Long Author Long Author Long Author", 255, true);
-library.appendChild(testBook.createEntry());
-library.appendChild(testBook2.createEntry());
