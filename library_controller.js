@@ -10,19 +10,43 @@ function Book(title, author, pages, read) {
     this.createEntry = function () {
         const entry = document.createElement("article")
         entry.classList.add("book-card");
-        entry.classList.add("read");
+        if (this.read === "true") {
+            entry.classList.add("read");
+        }
+        entry.setAttribute("id", `${this.title}-${this.author}-${this.pages}`)
         let headline = document.createElement("h1");
         let headlineText = document.createTextNode(`Title: ${this.title}`)
         headline.appendChild(headlineText);
-        entry.appendChild(headline);
         let authorLine = document.createElement("h2");
         let authorText = document.createTextNode(`Author: ${this.author}`);
         authorLine.appendChild(authorText);
-        entry.appendChild(authorLine)
         let pagesLine = document.createElement("div");
         let pagesText = document.createTextNode(`Pages: ${this.pages}`);
         pagesLine.appendChild(pagesText);
-        entry.appendChild(pagesLine)
+        let buttonContainer = document.createElement("div")
+        buttonContainer.classList.add("button-container")
+        let readButton = document.createElement("button");
+        readButton.setAttribute("target", `${this.title}-${this.author}-${this.pages}`)
+        readButton.appendChild(document.createTextNode("Mark read"));
+        readButton.addEventListener("click", function(e) {
+            toSetRead = document.getElementById(readButton.getAttribute("target"));
+            toSetRead.classList.toggle("read");
+        })
+        let removeButton = document.createElement("button");
+        removeButton.setAttribute("target", `${this.title}-${this.author}-${this.pages}`);
+        let rtext = document.createTextNode("Remove book");
+        removeButton.appendChild(rtext);
+        removeButton.setAttribute("name", `${this.title}-${this.author}-${this.pages}`);
+        removeButton.addEventListener("click", function(e) {
+            toRemove = document.getElementById(removeButton.getAttribute("name"));
+            toRemove.remove();
+        })
+        buttonContainer.appendChild(readButton);
+        buttonContainer.appendChild(removeButton);
+        entry.appendChild(headline);
+        entry.appendChild(authorLine);
+        entry.appendChild(pagesLine);
+        entry.appendChild(buttonContainer)
         if (this.read === false) {
             entry.classList.toggle("read")
         }

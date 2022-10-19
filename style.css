@@ -64,7 +64,7 @@ form {
     display: grid;
     padding: 1rem;
     gap: 1rem;
-    grid-auto-rows: 175px;
+    grid-auto-rows: 200px;
     grid-template-columns: repeat(4, 1fr);
     overflow: auto;
     justify-content: space-around;
@@ -81,7 +81,7 @@ form {
 }
 
 .read {
-    border: solid 3px var(--c2);
+    border: solid 3px #addfad;
 }
 
 .book-card>h1 {
@@ -95,4 +95,18 @@ form {
 .book-card>div {
     margin: 0.5rem;
 
+}
+
+.button-container {
+    display: flex;
+}
+
+.book-card >.button-container>button {
+    padding: 0;
+    margin: 0.5rem;
+    box-shadow: 2px 2px 1px;
+    background-color: var(--c4);
+    flex: 1 1 1;    max-width: 100px;
+    align-self: flex-end;
+    justify-content: flex-end;
 }
